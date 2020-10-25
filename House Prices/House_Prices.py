@@ -545,21 +545,7 @@ lazy= LazyRegressor(verbose=0,ignore_warnings=False, custom_metric=None )
 modelos_lazy, predicoes_lazy= lazy.fit(x_train, x_test, y_train, y_test)
 modelos_lazy
 
-"""**ALGORITMO PARA TURNING**
-
-- record Atual => 24088.17 // 170.70
-
-- Quanto < a taxa de aprendizagem, > deve ser n_estimators.
-- Número de árvores , geralmente adicionando mais árvores ao modelo pode ser muito lento para overfit. 
-  O conselho é continuar adicionando árvores até que nenhuma melhoria adicional seja observada.
-- Profundidade da árvore , árvores mais profundas são árvores mais complexas e árvores mais curtas são preferidas. 
-  Geralmente, melhores resultados são vistos com níveis de 4 a 8.
-- Número de nós ou número de folhas , como profundidade, pode restringir o tamanho da árvore, mas não é restrito 
-  a uma estrutura simétrica se outras restrições forem usadas.
-- O número de observações por divisão impõe uma restrição mínima na quantidade de dados de treinamento em um nó
-  de treinamento antes que uma divisão possa ser considerada
-- A melhoria mínima na perda é uma restrição na melhoria de qualquer divisão adicionada a uma árvore.
-"""
+"""**ALGORITMO PARA TURNING**"""
 
 # GradientBoostingRegressor
 from sklearn.ensemble import GradientBoostingRegressor
