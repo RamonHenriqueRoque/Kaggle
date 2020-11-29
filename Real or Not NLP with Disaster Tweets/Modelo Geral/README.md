@@ -9,7 +9,7 @@ O primeiro arquivo é referente a analise da base, pre-processamentoo, carregand
 
 O segundo arquivo é referente ao treinamento do modelo.
 
-### Primeiro Arquivo (Pre-Processamentoo)- Etapas e explicação.
+### Primeiro Arquivo (Pre-Processamento)- Etapas e explicação.
 
 - **Baixando as Libs.** - Baixando as libs que não tem baixadas no google colab.
 
