@@ -150,6 +150,48 @@ def remove_stopwords(text):
 base["clear_text"]= remove_stopwords(base["clear_text"])
 base["clear_text"]
 
+"""**Pegando as caracteres especiais**"""
+from string import ascii_lowercase, digits
+
+def pegando_caracteres(base, campo):
+  caracteres_todos= []
+
+  # Rodar todas as linhas para pegar todas os caracteres
+  for linha in range(len(base[campo])):
+    frase_analise= [list(i) for i in base[campo][linha].split()]
+    
+    # Juntando as listas
+    for contar_palavras in frase_analise:           # Referente a lista
+      for letra in contar_palavras:                 # Referente a letra
+        if letra not in caracteres_todos:
+          caracteres_todos.append(letra)
+  
+  # Tirando numeros e letras
+  alfa= list(ascii_lowercase)
+  num= list(digits)
+
+  for letra in alfa:
+    if letra in caracteres_todos:
+      caracteres_todos.remove(letra)
+
+  for numero in num:
+    if numero in caracteres_todos:
+      caracteres_todos.remove(numero)
+  
+  caracteres_todos.pop(51)             # Para tirar => \
+
+  return(caracteres_todos)
+
+caracteres_especiais= pegando_caracteres(base, "clear_text")
+print("Os caracteres achado foram:\n{}".format("".join(caracteres_especiais)))
+
+# Removendo as caracteres que a lib RE reserva
+pontuacoes_especiais_lib_RE= ["?", "|", "(", ")", "+", ".", "$", "^", "+", "[", "]", "&", "*"]
+
+for pont in pontuacoes_especiais_lib_RE:
+  if pont in caracteres_especiais:
+    caracteres_especiais.remove(pont)
+
 """**Eliminando Http, ID @ e outras coisas**"""
 
 # Filtros
@@ -169,16 +211,17 @@ def eliminando_texto(texto):
     texto[index]=texto[index].replace(r"&lt",r"<")                               # Substituir LT por <
     texto[index]=texto[index].replace(r"&gt",r">")                               # Substituir GT por >
 
+    #Transformar as pontuações que o lib Re são restritas
+    for pont in pontuacoes_especiais_lib_RE:
+      texto[index]=texto[index].replace(r"%s"%(pont),r"")                        # Todas as pontuação restritas, vão ser tiradas
+
     # Geral
     texto[index]= re.sub(r"@[a-z0-9$-_@.&+]+"," ", texto[index])                 # @nome_qualquer
     texto[index]= re.sub(r"https?://[A-Za-z0-9./]+"," ",texto[index])            # Http
     texto[index]= re.sub(r"<[^<]+>"," ", texto[index])                           # Removendo tags
-    texto[index]= re.sub(r"\W+"," ", texto[index])                               # alfaNumerico
-    texto[index]= re.sub(r"[0-9]"," ", texto[index])                            # Tirando os numeros
-
+    
     # caracter indesejaveis
-    caracter_indesejaveis= ["_", "û", "å", "ì", "ê", "¼", "â",	"è", "ü"]
-    for simbolos in caracter_indesejaveis:
+    for simbolos in caracteres_especiais:
       segmento_simbolos= [r"%s[a-z0-9$-_@.&ªºòóï+]+"%(simbolos), r"%s+"%(simbolos)]
       texto[index]= re.sub(segmento_simbolos[0]," ", texto[index])
       texto[index]= re.sub(segmento_simbolos[1]," ", texto[index])                         
