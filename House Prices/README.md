@@ -1,6 +1,4 @@
 # HOUSE PRICES - ACCURACY ~ 0.13487
-Projeto não terminado, critério para o término seria quando o **ACCURACY ~ 0.123**.
-
 ## Resumo
 Nesse repositório, Treinei a famosa base do **House Prices**, usando Machine Learning.
 
