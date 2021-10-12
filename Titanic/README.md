@@ -1,6 +1,4 @@
 # TITANIC - ACCURACY ~ 79%
-Projeto não terminado, critério para o termino seria quando o **ACCURACY > 81%**.
-
 ## Resumo
 Nesse repositório, treinamos dois tipos de IA (Machine Learning e o Deep Learning) na famosa base do **Titanic**.
 
