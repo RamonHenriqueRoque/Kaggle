@@ -31,7 +31,7 @@ O segundo arquivo é referente ao treinamento do modelo.
 
 - **Pre-Processamentoss P2.**
 
-=> Bags of words - Usando os algoritmos CountVectorizer e o TfidfVectorizer, para transformar o texto em números;
+=> Bags of words - Usando os algoritmos CountVectorizer e o TfidfVectorizer, para transformar o texto em vetores;
 
 => Concatenação de bases - Tendo a ideia do Features Creation;
 
